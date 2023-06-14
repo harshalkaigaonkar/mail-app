@@ -5,6 +5,7 @@ import MailList from './pages/MailList';
 import Mail from './pages/Mail';
 import Sidebar from './components/Sidebar';
 import ErrorPage from './pages/404';
+import Search from './pages/Search';
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
           } />
           <Route path={"mails/:mailType"} element={
             <MailList />
+          } />
+          <Route path={"search"} element={
+            <Search />
           } />
           <Route path={"*"} element={
             <ErrorPage />
