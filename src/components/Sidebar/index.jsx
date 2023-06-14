@@ -31,8 +31,8 @@ const sidebar = [
 
 const Sidebar = () => {
     const navigate = useNavigate();
-    // idk why here useparams didn't work.
     const {pathname} = useLocation();
+
     const onClickHandler = (e) => {
         const title = e.target.textContent;
         if(title === "All")

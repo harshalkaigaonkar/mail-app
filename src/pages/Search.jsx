@@ -34,6 +34,7 @@ const Search = () => {
 
   useEffect(() => {
     fetchQueriedMails();
+    document.title = "Mail App | Search"
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 

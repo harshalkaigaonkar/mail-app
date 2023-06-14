@@ -14,6 +14,7 @@ const Mail = () => {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   async function fetchCurrentMail() {
+    document.title = `Mail App | Mail`;
     if(!mails)
       await dispatch(fetchMails()).then(
         ({payload: mails}) => {
@@ -31,7 +32,6 @@ const Mail = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mailId]);
 
-  console.log(mail)
   const onBackHandler = () => {
     navigate(-1);
   }

@@ -19,6 +19,7 @@ const MailList = () => {
       case "draft": 
       case "trash" :
       case "all": {
+        document.title = `Mail App | ${mailType[0].toUpperCase()+mailType.substring(1)} Mails`;
         if(!mails)
           await dispatch(fetchMails()).then(
             ({payload : mails}) => {
