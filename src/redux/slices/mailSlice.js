@@ -4,7 +4,6 @@ import axios from 'axios'
 const initialState = {
     loading: true,
     mails: null,
-    currentMail: null
 }
 
 export const fetchMails = createAsyncThunk(
@@ -28,16 +27,10 @@ export const mailSlice = createSlice({
     } 
   },
   reducers: {
-    onSetCurrentMail: (state, action) => {
-        state.currentMail = state.mails.find((item) => item.id === action.payload);
-    }
   }
 })
 
-export const { onSetCurrentMail } = mailSlice.actions
-
 export const selectLoading = (state) => state.mail.loading;
 export const selectMails = (state) => state.mail.mails;
-export const selectCurrentMail = (state) => state.mail.currentmail;
 
 export default mailSlice.reducer

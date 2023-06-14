@@ -12,7 +12,7 @@ const MailList = () => {
   const [taggedMails, setTaggedMails] = useState([]);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  async function fetchCurrentMail() {
+  async function fetchTaggedMails() {
     switch(mailType) {
       case "inbox": 
       case "spam": 
@@ -21,11 +21,11 @@ const MailList = () => {
         if(!mails)
           await dispatch(fetchMails()).then(
             ({payload : mails}) => {
-              setTaggedMails(mails.filter((item) => item.tag === mailType));
+              setTaggedMails(() => mails.filter((item) => item.tag === mailType));
             }
           );
         else
-          setTaggedMails(mails.filter((item) => item.tag === mailType));
+          setTaggedMails(() => mails.filter((item) => item.tag === mailType));
         return;
       }
       default: {
@@ -35,7 +35,7 @@ const MailList = () => {
   }
 
   useEffect(() => {
-    fetchCurrentMail();
+    fetchTaggedMails();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mailType]);
 
@@ -68,20 +68,20 @@ const MailList = () => {
     <div className='px-10 w-10/12'>
       <div className='flex flex-row justify-between items-center'>
       <h2 className='p-4 font-bold text-3xl capitalize'>{mailType}</h2>
-      <p className='text-md font-medium'>Showing results - {taggedMails.length} of {mails.length}</p>
+      <p className='text-md font-medium text-black/50'>Showing results - {taggedMails.length} of {mails.length}</p>
       </div>
       <div className='mt-5 w-full flex flex-col gap-5' onClick={onClickMail}>
         {taggedMails.map((item, index) => (
-          <div key={index} id={item.id} className="py-2 px-5 flex flex-row items-center justify-between w-full rounded-lg border">
+          <div key={index} id={item.id} className="py-2 px-5 flex flex-row items-center justify-between w-full rounded-lg border cursor-pointer transition duration-75 hover:bg-black/5">
             <div id={item.id} className='w-[20%] h-full flex justify-center items-center'>
-              <p id={item.id} className='font-bold border h-8 w-8 rounded-full text-center'>{item.userId}</p>
+              <p id={item.id} className='py-[2px] font-bold border h-8 w-8 rounded-full text-center'>{item.userId}</p>
             </div>
             <div id={item.id} className='px-4 min-w-[90%]'>
               <p id={item.id} className='overflow-hidden truncate font-bold text-md'>{item.subject}</p>
               <p id={item.id} className='overflow-hidden truncate text-black/40'>{item.body}</p>
             </div>
             <div id={item.id} className='px-2 w-[20%]'>
-              <p id={item.id} className='px-3 py-2 border text-center rounded-full'>{item.tag}</p>
+              <p id={item.id} className='px-3 py-2 border text-center rounded-full text-sm font-medium'>{item.tag}</p>
             </div>
           </div>
         ))}
