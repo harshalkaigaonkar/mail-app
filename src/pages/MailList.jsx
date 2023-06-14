@@ -74,16 +74,16 @@ const MailList = () => {
       </div>
       <div className='mt-5 w-full flex flex-col gap-5' onClick={onClickMail}>
         {taggedMails.map((item, index) => (
-          <div key={index} id={item.id} className="py-2 px-5 flex flex-row items-center justify-between w-full rounded-lg border cursor-pointer transition duration-75 hover:bg-black/5">
+          <div key={index} id={item.id} className="py-3 px-5 flex flex-row items-center justify-between w-full rounded-lg border cursor-pointer transition duration-300 hover:shadow-xl hover:scale-[102%] hover:bg-black/5 hover:border-black">
             <div id={item.id} className='w-[20%] h-full flex justify-center items-center'>
-              <p id={item.id} className='py-[2px] font-bold border h-8 w-8 rounded-full text-center'>{item.userId}</p>
+              <p id={item.id} className='py-[2px] font-bold border h-8 w-8 rounded-full bg-black/20 text-center'>{item.userId}</p>
             </div>
             <div id={item.id} className='px-4 min-w-[90%]'>
-              <p id={item.id} className='overflow-hidden truncate font-bold text-md'>{item.subject}</p>
-              <p id={item.id} className='overflow-hidden truncate text-black/40'>{item.body}</p>
+              <p id={item.id} className='overflow-hidden truncate font-medium text-xl'>{item.subject}</p>
+              <p id={item.id} className='overflow-hidden truncate text-black/40 text-md'>{item.body}</p>
             </div>
             <div id={item.id} className='px-2 w-[20%]'>
-              <p id={item.id} className='px-3 py-2 border text-center rounded-full text-sm font-medium'>{item.tag}</p>
+              <p id={item.id} className='px-3 py-2 border text-center rounded-full text-sm font-medium bg-black/5'>{item.tag}</p>
             </div>
           </div>
         ))}

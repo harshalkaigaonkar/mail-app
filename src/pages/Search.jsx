@@ -71,9 +71,9 @@ const Search = () => {
       </div>
       <div className='mt-5 w-full flex flex-col gap-5' onClick={onClickMail}>
         {queriedMails.length > 0 && queriedMails.map((item, index) => (
-          <div key={index} id={item.id} className="py-2 px-5 flex flex-row items-center justify-between w-full rounded-lg border cursor-pointer transition duration-75 hover:bg-black/5">
+          <div key={index} id={item.id} className="py-2 px-5 flex flex-row items-center justify-between w-full rounded-lg border cursor-pointer transition duration-300 hover:shadow-xl hover:scale-[102%] hover:border-black hover:bg-black/5">
             <div id={item.id} className='w-[20%] h-full flex justify-center items-center'>
-              <p id={item.id} className='py-[2px] font-bold border h-8 w-8 rounded-full text-center'>{item.userId}</p>
+              <p id={item.id} className='py-[2px] font-bold border h-8 w-8 rounded-full text-center bg-black/20'>{item.userId}</p>
             </div>
             <div id={item.id} className='px-4 min-w-[90%]'>
               <p id={item.id} className='overflow-hidden truncate font-bold text-md'>{item.subject}</p>

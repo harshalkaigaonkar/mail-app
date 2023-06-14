@@ -43,9 +43,9 @@ const Sidebar = () => {
     <div className='py-4 sticky top-20 left-0 list-none h-[90vh] flex flex-col justify-start gap-2 border-r w-2/12'>
         {sidebar.map((item, index) => (
             <li key={index} id={item.type}  className={`${(item.type === "All" && pathname === "/") || item.type.toLowerCase() === pathname.split("/")[2] ? "bg-black/10 ": ""}
-            w-[80%] p-1 flex gap-4 items-center justify-center pr-2 w-[80%] rounded-r-md cursor-pointer transition duration-75 hover:bg-black/5`} onClick={onClickHandler}>
+            w-[80%] p-1 flex gap-4 items-center justify-center pr-2 w-[80%] rounded-r-md cursor-pointer group transition duration-75 hover:bg-black/5`} onClick={onClickHandler}>
                 <img src={(item.type === "All" && pathname === "/") || item.type.toLowerCase() === pathname.split("/")[2] ? `${item.icon_active}`: `${item.icon}`} alt={`${item.type}`} className="w-[20px] h-[20px]" /> 
-                <p className='font-semibold w-12'>{item.type}</p>
+                <p className='font-medium w-12 transition duration-300 group-hover:translate-x-1 group-hover:font-semibold'>{item.type}</p>
             </li>
         ))}
     </div>

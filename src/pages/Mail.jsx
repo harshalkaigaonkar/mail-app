@@ -65,7 +65,7 @@ const Mail = () => {
         <p className='capitalize'>{mail?.tag}</p>
       </div>
       </div>
-      <div className='mt-5 ml-10 w-full flex flex-col gap-5'>
+      <div className='mt-5 ml-[5.5rem] w-inherit flex flex-col gap-5'>
         <p>{mail?.body}</p>
       </div>
     </div>
