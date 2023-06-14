@@ -17,19 +17,20 @@ const MailList = () => {
       case "inbox": 
       case "spam": 
       case "draft": 
-      case "trash" : {
+      case "trash" :
+      case "all": {
         if(!mails)
           await dispatch(fetchMails()).then(
             ({payload : mails}) => {
-              setTaggedMails(() => mails.filter((item) => item.tag === mailType));
+              setTaggedMails(() => mailType === 'all' ? mails : mails.filter((item) => item.tag === mailType));
             }
           );
         else
-          setTaggedMails(() => mails.filter((item) => item.tag === mailType));
+          setTaggedMails(() => mailType === 'all' ? mails : mails.filter((item) => item.tag === mailType));
         return;
       }
       default: {
-        navigate("/");
+        navigate("/mails/inbox");
       }
     }
   }
@@ -67,7 +68,7 @@ const MailList = () => {
   return (
     <div className='px-10 w-10/12'>
       <div className='flex flex-row justify-between items-center'>
-      <h2 className='p-4 font-bold text-3xl capitalize'>{mailType}</h2>
+      <h2 className='p-4 font-bold text-3xl capitalize'>{mailType} Mails</h2>
       <p className='text-md font-medium text-black/50'>Showing results - {taggedMails.length} of {mails.length}</p>
       </div>
       <div className='mt-5 w-full flex flex-col gap-5' onClick={onClickMail}>

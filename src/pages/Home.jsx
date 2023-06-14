@@ -3,6 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 import { fetchMails, selectLoading, selectMails } from '../redux/slices/mailSlice';
 
+/**
+ * As Inbox is the Default Page
+ * this page is not used, replaced by MailList.jsx
+ */
+
 const Home = () => {
   const navigate = useNavigate();
   const dispatch  = useDispatch();

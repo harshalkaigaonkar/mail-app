@@ -1,7 +1,6 @@
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
-import Home from './pages/Home';
 import MailList from './pages/MailList';
 import Mail from './pages/Mail';
 import Sidebar from './components/Sidebar';
@@ -14,9 +13,11 @@ function App() {
       <div className='flex'>
       <Sidebar />
         <Routes>
-          <Route exact path={"/"} element={
-            <Home />
-          } />
+        <Route
+            exact
+            path="/"
+            element={<Navigate to="/mails/inbox" replace={true} /> }
+          />
           <Route path={"mail/:mailId"} element={
             <Mail />
           } />
